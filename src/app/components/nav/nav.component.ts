@@ -11,7 +11,7 @@ export class NavComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.name_emp=JSON.parse(localStorage.getItem('client')).name;
+    this.name_emp=JSON.parse(localStorage.getItem('client')).company.name;
     this.img_emp=JSON.parse(localStorage.getItem('client')).company.urlImage;
     console.log(this.name_emp);
     console.log(this.img_emp);

@@ -58,15 +58,15 @@ input:focus{
 .full-width{
 	width: 100%;
 }
-$color-easymaq: #FF5722;
+$color-marketmaq: #FF5722;
 .full-width{
 	width: 100%;
 }
 
-$color-easymaq: #FF5722;
+$color-marketmaq: #FF5722;
 .mat-focused{
 	.mat-input-placeholder{
-		color: $color-easymaq !important;
+		color: $color-marketmaq !important;
 	}
 }
 md-input-container{
@@ -75,14 +75,14 @@ md-input-container{
 
 .mat-input-placeholder{
 	&.mat-focused{
-		color: $color-easymaq !important;
+		color: $color-marketmaq !important;
 	}
 }
 .mat-input-underline{
 	.mat-input-ripple{
-		background: $color-easymaq;
+		background: $color-marketmaq;
 		&.mat-focused{
-			color: $color-easymaq;
+			color: $color-marketmaq;
 		}
 	}
 }
@@ -94,20 +94,20 @@ md-input-container{
     background-color:  rgba(255, 87, 34, 0.8)
 }
 .swiper-pagination-bullet-active{
-	background: $color-easymaq !important;
+	background: $color-marketmaq !important;
 }
 .mat-select:focus:not(.mat-select-disabled).mat-primary .mat-select-underline{
-    background: $color-easymaq !important;
+    background: $color-marketmaq !important;
 }
 .mat-select:focus:not(.mat-select-disabled) .mat-select-trigger{
-	color: $color-easymaq !important;
+	color: $color-marketmaq !important;
 }
 .mat-select:focus:not(.mat-select-disabled) .mat-select-underline{
-	background: $color-easymaq !important;
+	background: $color-marketmaq !important;
 }
 
 .mat-select:focus:not(.mat-select-disabled) .mat-select-arrow{
-	color: $color-easymaq !important;
+	color: $color-marketmaq !important;
 }
 .mat-select{
 	width:100% !important;
@@ -123,18 +123,18 @@ md-input-container{
 	}
 }
 .mat-option.mat-selected{
-	color: $color-easymaq !important;
+	color: $color-marketmaq !important;
 	width:100% !important;
 }
 .mat-option.mat-selected.mat-primary, .mat-primary .mat-option.mat-selected{
     color:$accent-color !important;
 }
 .mat-radio-checked .mat-radio-outer-circle{
-	border-color: $color-easymaq !important;
+	border-color: $color-marketmaq !important;
 }
 
 .mat-radio-inner-circle{
-	background: $color-easymaq;
+	background: $color-marketmaq;
 }
 
 .mat-input-infix{
@@ -147,7 +147,7 @@ md-input-container{
 
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
 .mat-checkbox-checked.mat-accent .mat-checkbox-background{
-	background-color: $color-easymaq;
+	background-color: $color-marketmaq;
 }
 
 .ngx-pagination .current{

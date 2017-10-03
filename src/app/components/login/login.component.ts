@@ -30,14 +30,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) { }
   misdatosdataconfig: any = {
         'activemodal': false,
-        'titulo': 'Mensaje de Easymaq',
+        'titulo': 'Mensaje de Marketmaq',
         'descripcion': 'En unos momentos le estaremos informando a su correo'
 
   };
 
   misdatosdataconfig2: any = {
         'activemodal': false,
-        'titulo': 'Mensaje de Easymaq',
+        'titulo': 'Mensaje de Marketmaq',
         'descripcion': 'En unos momentos le estaremos informando a su correo'
 
   };

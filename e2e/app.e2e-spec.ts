@@ -1,10 +1,10 @@
-import { AdminEasymaqPage } from './app.po';
+import { AdminMarketmaqPage } from './app.po';
 
-describe('admin-easymaq App', () => {
-  let page: AdminEasymaqPage;
+describe('admin-marketmaq App', () => {
+  let page: AdminMarketmaqPage;
 
   beforeEach(() => {
-    page = new AdminEasymaqPage();
+    page = new AdminMarketmaqPage();
   });
 
   it('should display welcome message', () => {

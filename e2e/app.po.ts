@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class AdminEasymaqPage {
+export class AdminMarketmaqPage {
   navigateTo() {
     return browser.get('/');
   }

@@ -72,11 +72,13 @@
 								<!-- <td><a href="">Ver</a></td> -->
 								<td><a [routerLink]="['/publicar/editar',publicacion.id]"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 								<td><md-checkbox (click)="StatusPubli(publicacion.id,publicacion.status)" [checked]="publicacion.status==1"></md-checkbox></td>
-								<td><a [routerLink]="['/estadistica',publicacion.id]">
+								<!-- <td><a [routerLink]="['/estadistica',publicacion.id]"> -->
+								<td><a href="#">
 									<i class="fa fa-bar-chart" aria-hidden="true"></i>
 									</a>
 								</td>
-								<td><a [href]="['http://54.91.160.216/pe/maquinarias/'+publicacion.id]" target="_blanck">Ver más</a></td>
+								<!-- <td><a [href]="['http://54.91.160.216/pe/maquinarias/'+publicacion.id]" target="_blanck">Ver más</a></td> -->
+								<td><a href="#">Ver más</a></td>
 							</tr>
 				  </tbody>
 				</table>

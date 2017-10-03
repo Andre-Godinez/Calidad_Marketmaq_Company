@@ -19,6 +19,7 @@ export class HomeComponent  implements OnInit{
   ngOnInit(){
     this.iduser = JSON.parse(localStorage.getItem('client')).id;
     this.getListaPublicaciones();
+    this.getTotalPublicaciones();
   }
 
   getListaPublicaciones() {
@@ -35,6 +36,13 @@ export class HomeComponent  implements OnInit{
         publicaciones.unsubscribe();
       });
 
+  }
+  getTotalPublicaciones(){
+    let listPublicaciones = this._publicarService.getPublicaciones(this.iduser)
+                        .subscribe(res=>{
+                          console.log('TotalPublicaciones',res);
+                          listPublicaciones.unsubscribe();
+                        })
   }
 
     public lineChartData:Array<any> = [
