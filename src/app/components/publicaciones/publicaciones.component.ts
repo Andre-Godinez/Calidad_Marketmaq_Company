@@ -12,7 +12,7 @@ export class PublicacionesComponent implements OnInit {
   /* categorias:string[]=['Autohormiguera','Camion grua','Cargador Frontal','Excavadoras','Dumper'];
   marcas:string[]=['Samsung','Caterpillar'];
   tipos:string[]=['alquiler','venta']; */
-
+  checksActive:any[]=[];  
   categoryId: any;
   brandId: any;
   type: any;
@@ -50,6 +50,11 @@ export class PublicacionesComponent implements OnInit {
         console.log(res);
         this.listaPublicaciones = res;
         console.log(this.listaPublicaciones);
+        this.checksActive = this.listaPublicaciones.map((obj)=>{
+          if(obj.status==1) return true;
+          else return false;
+        })
+        console.log(this.checksActive);
         publicaciones.unsubscribe();
       });
 
@@ -125,20 +130,34 @@ export class PublicacionesComponent implements OnInit {
     this.buscar();
   }
 
-  StatusPubli(id, status) {
+  StatusPubli(obj: any, idx:any) {
+    console.log('data',obj.status)
     let newstatus: number;
-    if (status === 1) {
+    if (obj.status === 1) {
       newstatus = 2;
-    } else {
-      newstatus = 1;
+      obj.status = 2;
+    }else{
+      newstatus=1;
+      obj.status = 1;
     }
-    let pstatus = this._pS.ModificarPub(id, {
-      status: newstatus
+    console.log('click',newstatus);
+    let pstatus = this._pS.ModificarPub(obj.id, {
+      status: obj.status
     }).subscribe(res => {
       console.log(res);
       pstatus.unsubscribe();
     })
-
   }
 
+  eliminarPublicacion(id,index){
+    // let newIndex;
+    console.log((this.p - 1) * 10 + index)
+    // newIndex=this.listaPublicaciones[(this.p - 1) * 10 + index];
+    // this.listaPublicaciones.splice((this.p - 1) * 10 + index,1);
+    let eliminar = this._pS.eliminarPubId(id)
+            .subscribe(res=>{
+              console.log(res)
+              this.listaPublicaciones.splice((this.p - 1) * 10 + index,1);
+            })
+  }
 }

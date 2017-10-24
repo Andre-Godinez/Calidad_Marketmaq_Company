@@ -183,4 +183,9 @@ export class PublicarService {
      return this.http.get(ruta)
         .map(res=>res.json());
    }
+   eliminarPubId(id){
+    let ruta = `${this.url}/publications-delete/${id}`;
+    return this.http.delete(ruta)
+               .map(res=>res.json());
+  }
 }

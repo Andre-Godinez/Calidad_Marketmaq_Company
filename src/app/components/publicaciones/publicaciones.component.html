@@ -58,11 +58,12 @@
 							<th>Editar</th>
 				      <th>Activo</th>
 				      <th>Estadisticas</th>
-				      <th>Detalles</th>
+							<th>Detalles</th>
+							<th>Eliminar</th>
 				    </tr>
 				  </thead>
 				  <tbody>
-							<tr *ngFor="let publicacion of listaPublicaciones  | paginate: { itemsPerPage: 10, currentPage: p }">
+							<tr *ngFor="let publicacion of listaPublicaciones  | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
 								<th><img [src]="publicacion.urlImages[0]" alt=""></th>
                 <td>{{publicacion.brand.name}}</td>
                 <td>{{publicacion.modelo}}</td>
@@ -71,14 +72,15 @@
 								<td>{{publicacion.operacion}}</td>
 								<!-- <td><a href="">Ver</a></td> -->
 								<td><a [routerLink]="['/publicar/editar',publicacion.id]"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-								<td><md-checkbox (click)="StatusPubli(publicacion.id,publicacion.status)" [checked]="publicacion.status==1"></md-checkbox></td>
-								<!-- <td><a [routerLink]="['/estadistica',publicacion.id]"> -->
-								<td><a href="#">
+								<!-- <td><md-checkbox (click)="StatusPubli(publicacion.id,publicacion.status)" [checked]="publicacion.status==1"></md-checkbox></td> -->
+								<td><md-checkbox (click)="StatusPubli(publicacion,i)" [(ngModel)]="checksActive[(p - 1) * 10 + i]"></md-checkbox></td>								
+								<td><a [routerLink]="['/estadistica',publicacion.id]">
 									<i class="fa fa-bar-chart" aria-hidden="true"></i>
 									</a>
 								</td>
 								<!-- <td><a [href]="['http://54.91.160.216/pe/maquinarias/'+publicacion.id]" target="_blanck">Ver más</a></td> -->
-								<td><a href="#">Ver más</a></td>
+								<td><a [href]="['http://localhost:4200/pe/maquinarias/'+publicacion.id]" target="_blank">Ver más</a></td>
+								<td class="text-center"><a (click)="eliminarPublicacion(publicacion.id,i)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>								
 							</tr>
 				  </tbody>
 				</table>

@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       email: name,
       password: pass
     }
-    console.log(name+'-'+pass)
+    // console.log(name+'-'+pass)
     if(name == "" || pass == ""){
         this.confirm('Asegurese haber llenado los campos');
     }else if(!correo.valid){
@@ -87,19 +87,47 @@ export class LoginComponent implements OnInit, OnDestroy {
     }else{
       let subForm: Subscription = this.service.login(`${this.url}/usuarios/login?include=user`, obj)
         .subscribe((res: any) => {
-          console.log('res: ', res);
-          this.service.set(res);
+          if(res.companyId) {
+            console.log('res: ', res);
+            this.service.set(res);
+            this.router.navigate(['/home']);
+          } else {
+            console.log(res)
+            this.confirm("Usted necesita completar el registro empresarial para poder acceder a esta plataforma.");
+          }
         }, (err: any) => {
-          console.log('err : ', err);
+          // console.log('err : ', err);
           this.confirm("Correo o contraseña ingresados son incorrectos")
         }, () => {
-          console.log('complete');
+          // console.log('complete');
           subForm.unsubscribe();
-          this.router.navigate(['/home']);
         });
     }
 
   }
+
+  // register(email: string, pass: string, pru: any, emp: string,pais:string) {
+  //   if (!email || !pass) {
+  //     return;
+  //   } else {
+  //     let subForm: Subscription = this.service.register({
+  //       email: email,
+  //       password: pass,
+  //       empresa: emp,
+  //       countryId: pais
+  //     }).subscribe((res: any) => {
+  //       console.log('res: ', res);
+  //       this.rEmail = email;
+  //       this.rPass = pass;
+  //       this.rCorreo = pru;
+  //       this.confirmRegistro('Cuenta creada exitosamente, te enviamos un correo de bienvenida.');
+
+  //     },(err:any)=>{
+  //       this.confirm('El correo ingresado ya se encuentra registrado.');
+  //     });
+  //   }
+  //   console.log(emp,pais,email,pass)
+  // }
 
   register(email: string, pass: string, pru: any, emp: string,pais:string) {
     if (!email || !pass) {
@@ -115,15 +143,42 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.rEmail = email;
         this.rPass = pass;
         this.rCorreo = pru;
-        this.confirmRegistro('Cuenta creada exitosamente, te enviamos un correo de bienvenida.');
+        this.confirmRegistro('Cuenta creada exitosamente');
 
       },(err:any)=>{
-        this.confirm('El correo ingresado ya se encuentra registrado.');
+        // console.log('res: ', res);
+        if(err==2){
+         this.confirm('El correo ingresado ya se encuentra registrado como cuenta empresarial.');
+        }else{
+            if(!emp || !pais){
+              this.confirm('El correo ingresado ya existe, complete todos los campos para obtener su cuenta empresarial.')
+            }
+            else{
+
+              let id = this.service.getIdxEmail({
+                email:email
+              }).subscribe(res=>{
+                console.log(res.id)
+                  let subFormChangeC :Subscription= this.service.registerChangeWxE({
+                  password:pass,
+                  empresa:emp,
+                  countryId:pais
+                },res.id).subscribe((res:any)=>{
+                  console.log(res)
+                  this.rEmail = email;
+                  this.rPass = pass;
+                  this.rCorreo = pru;
+                  console.log(this.rEmail,this.rPass,this.rCorreo)
+                  this.confirmRegistro('Cuenta creada exitosamente');
+                })
+              })
+
+            }
+        }
       });
     }
-    console.log(emp,pais,email,pass)
+    // console.log(emp,pais,email,pass)
   }
-
   changeContainer(){
     this.registro=!this.registro;
   }

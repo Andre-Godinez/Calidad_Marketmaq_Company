@@ -26,7 +26,7 @@ export class HomeComponent  implements OnInit{
     let publicaciones = this._publicarService.getPublicacionesRecientes(this.iduser)
       .subscribe(res => {
         console.log(res);
-        this.cantPubli = res.length;
+        // this.cantPubli = res.length;
         this.ultimasPublic = res;
         /* if (this.cantPubli > 0) {
           this.ultimasPublic.push(res[this.cantPubli - 1], res[this.cantPubli - 2], res[this.cantPubli - 3]);
@@ -41,6 +41,8 @@ export class HomeComponent  implements OnInit{
     let listPublicaciones = this._publicarService.getPublicaciones(this.iduser)
                         .subscribe(res=>{
                           console.log('TotalPublicaciones',res);
+                          this.cantPubli = res.length;
+        
                           listPublicaciones.unsubscribe();
                         })
   }

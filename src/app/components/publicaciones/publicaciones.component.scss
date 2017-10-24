@@ -47,11 +47,13 @@
 	   margin: 10px 0;
 	}
 	.table{
-		box-shadow: $border-shadow-bread;
+    box-shadow: $border-shadow-bread;
+    font-size: 14px;
 		td,th{
 			vertical-align: middle;
 			a{
-				color: $accent-color;
+        color: $accent-color;
+        cursor: pointer;
 				&:hover{
 					text-decoration:underline;
 					font-weight: bold;
