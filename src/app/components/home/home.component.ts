@@ -27,7 +27,7 @@ export class HomeComponent  implements OnInit{
       .subscribe(res => {
         console.log(res);
         // this.cantPubli = res.length;
-        this.ultimasPublic = res;
+        this.ultimasPublic = res.reverse();
         /* if (this.cantPubli > 0) {
           this.ultimasPublic.push(res[this.cantPubli - 1], res[this.cantPubli - 2], res[this.cantPubli - 3]);
           console.log(this.cantPubli);
