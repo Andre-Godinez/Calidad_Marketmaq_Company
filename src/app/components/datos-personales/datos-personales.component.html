@@ -1,0 +1,136 @@
+<app-nav></app-nav>
+<div class="dash" *ngIf="datosPersonales">
+  <!-- <form #forma="ngForm"> -->
+    <div class="container-info-personal">
+      <div class="row d-flex justify-content-center">
+        <h2>Información de contacto</h2>
+      </div>
+      <hr>
+      <div class="row d-flex">
+        <!-- <div class="datos-personal col-md-8">
+          <div class="row">
+            <div class="col-12">
+              <md-input-container>
+                  <input type="text" mdInput placeholder="Nombres" [(ngModel)]="nombres" [value]="datosPersonales.firstName" name="nombres">
+              </md-input-container>
+            </div>
+            <div class="col-12">
+              <md-input-container>
+                  <input type="text" mdInput placeholder="Apellidos" [(ngModel)]="apellidos" [value]="datosPersonales.lastName" name="apellidos">
+              </md-input-container>
+            </div>
+            <div class="col-12">
+              <md-input-container >
+                  <input type="number" mdInput placeholder="DNI" [(ngModel)]="dni" [value]="datosPersonales.dni" name="dni">
+              </md-input-container>
+            </div>
+            <div class="col-12">
+              <md-input-container>
+                <input type="text" mdInput  [(ngModel)]="email1" name="email1" [value]="datosPersonales.email" disabled="true">
+              </md-input-container>
+            </div>
+            <div class="col-12">
+              <md-input-container>
+                <input type="text" mdInput placeholder="Email alternativo"  [value]="datosPersonales.emailAlternativo" [(ngModel)]="email2" name="email2">
+              </md-input-container>
+            </div>
+            <div class="col-12">
+              <md-input-container>
+                  <input type="number" mdInput placeholder="Telefono" [(ngModel)]="telefono1"[value]="datosPersonales.phone01" name="telefono1">
+              </md-input-container>
+            </div>
+            <div class="col-12">
+              <md-input-container>
+                  <input type="number" mdInput placeholder="Telefono 2" [(ngModel)]="telefono2" [value]="datosPersonales.phone02" name="telefono2">
+              </md-input-container>
+            </div>
+            <div class="col-12">
+              <md2-datepicker [(ngModel)]="fechaNacimiento" name="fechaNacimiento" placeholder="Fecha de nacimiento"></md2-datepicker>
+            </div>
+            <br>
+          </div>
+        </div> -->
+        <div class="datos-personal col-md-8">
+          <div class="row">
+            <div class="col-12">
+              <md-input-container>
+                  <input type="text" mdInput placeholder="Nombres" [(ngModel)]="nombres"  name="nombres">
+              </md-input-container>
+            </div>
+            <div class="col-12">
+              <md-input-container>
+                  <input type="text" mdInput placeholder="Apellidos" [(ngModel)]="apellidos"  name="apellidos">
+              </md-input-container>
+            </div>
+            <div class="col-12">
+              <md-input-container >
+                  <input type="number" mdInput placeholder="DNI" [(ngModel)]="dni" name="dni">
+              </md-input-container>
+            </div>
+            <div class="col-12">
+              <md-input-container>
+                <input type="text" mdInput placeholder="Email" [(ngModel)]="email1" name="email1" disabled="true">
+              </md-input-container>
+            </div>
+            <div class="col-12">
+              <md-input-container>
+                <input type="text" mdInput placeholder="Email alternativo"  [(ngModel)]="email2" name="email2">
+              </md-input-container>
+            </div>
+            <div class="col-12">
+              <md-input-container>
+                  <input type="number" mdInput placeholder="Telefono" [(ngModel)]="telefono1" name="telefono1">
+              </md-input-container>
+            </div>
+            <div class="col-12">
+              <md-input-container>
+                  <input type="number" mdInput placeholder="Telefono 2" [(ngModel)]="telefono2" name="telefono2">
+              </md-input-container>
+            </div>
+            <div class="col-12">
+              <md2-datepicker [(ngModel)]="fechaNacimiento" name="fechaNacimiento" placeholder="Fecha de nacimiento"></md2-datepicker>
+            </div>
+            <!-- <h5>Datos Empresa</h5>
+            <div class="col-12">
+                <md-input-container>
+                    <input type="text" mdInput placeholder="Nombre" [(ngModel)]="nombreEmpresa" name="nombreEmpresa">
+                </md-input-container>
+            </div>
+            <div class="col-12">
+                <md-input-container>
+                    <input type="text" mdInput placeholder="Web" [(ngModel)]="webEmpresa" name="webEmpresa">
+                </md-input-container>
+            </div>
+            <div class="col-12">
+                <md-input-container>
+                    <input  mdInput placeholder="RUC" [(ngModel)]="ruc" name="ruc">
+                </md-input-container>
+            </div> -->
+            <br>
+          </div>
+        </div>
+
+
+        <div class="img-personal col-md-4">
+          <div class="content-img">
+            <div *ngIf="!imagen"><i class="fa fa-user-circle-o"></i></div>
+            <img *ngIf="imagen" class="img-fluid" [src]="imagen"  height="auto">
+            <div class="edit" >
+              <label for="inp-file"><i class="fa fa-pencil ico-pencil" aria-hidden="true"></i></label>
+              <input style="display:none" (archivosImg)="archivosImagenes($event)" NgDropFiles2  type="file" id="inp-file" accept="image/*">
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row d-flex justify-content-center">
+        <button  *ngIf="btnguardar" class="btn btn-guardar" (click)="guardar()">Guardar</button>
+        <div *ngIf="visible">
+          <md-spinner></md-spinner>
+        </div>
+      </div>
+
+    </div>
+  <!-- </form> -->
+</div>
+<app-easymodal [dataconfig]="misdatosdataconfig"></app-easymodal>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FileItem } from "../../../models/file-item";
 import { PublicarService } from '../../../services/publicar.service';
+import { MisdatosService } from '../../../services/misdatos.service';
 
 @Component({
   selector: 'app-publicar-nuevo',
@@ -11,7 +12,7 @@ import { PublicarService } from '../../../services/publicar.service';
 export class PublicarNuevoComponent implements OnInit {
   misdatosdataconfig: any = {
         'activemodal': false,
-        'titulo': 'Mensaje de Marketmaq',
+        'titulo': 'Mensaje de Easymaq',
         'descripcion': 'En unos momentos le estaremos informando a su correo'
 
   };
@@ -53,16 +54,65 @@ export class PublicarNuevoComponent implements OnInit {
   modelo: any;
   forma:NgForm;
 
-  constructor(private _publicarService: PublicarService) {
+  idcompany:any;
+  iduser:any;
+  datosPersona:any;
+  datosEmpresa:any;
+  misavisosmapa: any;
+
+  constructor(private _publicarService: PublicarService, private _misDatosService:MisdatosService) {
+    this.iduser = JSON.parse(localStorage.getItem('client')).id;
+    this.idcompany = JSON.parse(localStorage.getItem('client')).companyId;
     this.listaDepartamento = _publicarService.getUbigeoDepartamento();
     this.tipos = _publicarService.getTipoPublicacion();
     this.condiciones = _publicarService.getCondicionPublicacion();
   }
 
+
   ngOnInit() {
+    console.log(this.iduser);
+    console.log(this.idcompany);
     this.getCaterogia();
     this.getMarcas();
+    this.getDatosPersona();
+    this.getDatosEmpresa();
   }
+
+  getDatosPersona(){
+    let datosP = this._misDatosService.getDatosPersona(this.iduser)
+              .subscribe(res=>{
+                this.datosPersona = res;
+                console.log(this.datosPersona);
+                datosP.unsubscribe();
+                this.nombre=this.datosPersona.firstName;
+                this.apellido=this.datosPersona.lastName;
+                this.contacto_tel1=this.datosPersona.phone01;
+                this.contacto_tel2=this.datosPersona.phone02;
+                this.email=this.datosPersona.email;
+              })
+  }
+
+  getDatosEmpresa(){
+    let datosE = this._misDatosService.getDatosEmpresa(this.idcompany)
+              .subscribe(res=>{
+                this.datosEmpresa = res;
+                console.log(this.datosEmpresa);
+                datosE.unsubscribe();
+                this.listaDepartamento = this._publicarService.getUbigeoDepartamento();
+                this.selectDepartamento = this.datosEmpresa.uDepartamento;
+                this.listaProvincia = this._publicarService.getUbigeoProvincia(this.selectDepartamento);
+                this.selectProvincia = this.datosEmpresa.uProvincia;
+                this.listaDistrito = this._publicarService.getUbigeoDistrito(this.selectDepartamento, this.selectProvincia);
+                this.selectDistrito = this.datosEmpresa.uDistrito;
+                this.misavisosmapa = {
+                  direccion: this.datosEmpresa.direccion,
+                  latitud: this.datosEmpresa.location.lat,
+                  longitud: this.datosEmpresa.location.lng
+                };
+              })
+
+  }
+
   confirm(texto:string){
     this.misdatosdataconfig.activemodal=true;
     this.misdatosdataconfig.descripcion=texto;
@@ -72,7 +122,7 @@ export class PublicarNuevoComponent implements OnInit {
     let mar = this._publicarService.getMarcas()
               .subscribe(res=>{
                 this.listaMarcas=res;
-                console.log(this.listaMarcas);
+                // console.log(this.listaMarcas);
                 mar.unsubscribe;
               });
   }
@@ -107,19 +157,26 @@ export class PublicarNuevoComponent implements OnInit {
     this.direcci = event.nameBtndireccion;
     this.lat = event.nameLatitud;
     this.lon = event.nameLongitud;
-    localStorage.setItem("direccion", this.direcci);
-    localStorage.setItem("latitud", this.lat);
-    localStorage.setItem("longitud", this.lon);
+    // localStorage.setItem("direccion", this.direcci);
+    // localStorage.setItem("latitud", this.lat);
+    // localStorage.setItem("longitud", this.lon);
   }
   archivosImagenes(event) {
     this.archivos = event;
+    console.log(event);
   }
   archivosSobreDropZone(e: boolean) {
     this.estaSobreDropZone = e;
   }
+  showBtnmodal(event) {
+    this.misdatosdataconfig.activemodal = event.nameBtnmodal;
+    this.visible=false;
+    this.btnpublicar=true;
+  }
 
 
   submit(forma): void {
+
     this.visible = true;
     let objpubli =
       {
@@ -157,6 +214,8 @@ export class PublicarNuevoComponent implements OnInit {
         companyId: JSON.parse(localStorage.getItem('client')).company.id,
         brandId: this.marca
       }
+              // console.log(objpubli);
+
     if(this.marca== undefined|| this.modelo== undefined || this.ano== undefined || this.contacto_tel1== undefined || this.email == undefined){
         this.confirm('Asegúrese de haber llenado todos los datos obligatorios(*) del formulario');
         this.visible = false;
@@ -168,19 +227,31 @@ export class PublicarNuevoComponent implements OnInit {
       let files = [];
       this.archivos.forEach((obj) => {
         files.push(obj.archivo);
+        console.log(obj.archivo);
       });
       this._publicarService.uploadFile(files)
         .subscribe((res: any) => {
           var result = JSON.parse(res.response).data;
-          objpubli.urlImages = result;
-          let publi = this._publicarService.publicar(objpubli)
+          if(result==undefined || result.length==0 || result==null) {
+            console.log('NoAceptada: ',result);
+            this.confirm('No se pudo subir las imagenes al servidor, intentelo nuevamente.');
+            // this.visible = false;
+            // this.btnpublicar=true;
+          }
+          else{
+            objpubli.urlImages = result;
+            console.log('aceptada: ',objpubli.urlImages);
+            let publi = this._publicarService.publicar(objpubli)
             .subscribe((res: any) => {
+              console.log(objpubli);
+              console.log(res);
               this.visible = false;
               this.archivos.length=0;
               forma.reset();
               this.btnpublicar=true;
               this.confirm('Publicacion realizada con exito');
             });
+          }
         });
       }
   }

@@ -1,7 +1,12 @@
 <div class="nav-side-menu">
-    <div class="brand">
-      <i class="fa fa-user-circle" aria-hidden="true"></i>
-      <h4>{{name_emp}}</h4>
+    <div class="brand"  *ngIf="datosUsuario">
+      <div *ngIf="datosUsuario.urlPhoto" class="img-usuario">
+         <img [src]="datosUsuario.urlPhoto" alt="" class="img-fluid">
+      </div>
+      <div *ngIf="!datosUsuario.urlPhoto">
+         <i class="fa fa-user-circle" aria-hidden="true"></i>
+      </div>
+      <h4 *ngIf="datosEmpresa">-{{datosEmpresa.name}}-<br>{{datosUsuario.firstName}}</h4>
     </div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
         <div class="menu-list">
@@ -13,9 +18,13 @@
                 <li routerLinkActive="active" [routerLink]="['/publicaciones']">
                   <a [routerLink]="['/publicaciones']"><i class="fa fa-list"></i> Publicaciones </a>
                 </li>    
-                <!-- <li routerLinkActive="active">
-                  <a [routerLink]="['/perfil']"><i class="fa fa-user fa-lg"></i> Perfil</a>
-                </li> -->
+                <li data-toggle="collapse" data-target="#datos" class="collapsed" routerLinkActive="active" [ngClass]="{'active': active2==true}" >
+                  <a><i class="fa fa-address-card-o" aria-hidden="true"></i>  Información <span class="arrow"></span></a>
+                </li>
+                  <ul class="sub-menu collapse" id="datos">
+                    <li  routerLinkActive="active" [routerLink]="['/mis-datos-personales',idusuario]" ><a [routerLink]="['/mis-datos-personales',idusuario]"><i class="fa fa-user-o" aria-hidden="true"></i>  Contacto</a></li>
+                    <!-- <li routerLinkActive="active" [routerLink]="['/mis-datos-empresa',idempresa]" ><a  [routerLink]="['/mis-datos-empresa',idempresa]"><i class="fa fa-briefcase" aria-hidden="true"></i>  Empresa</a></li> -->
+                  </ul>
                 <li routerLinkActive="active" [routerLink]="['/login']" (click)="logout()">
                   <a ><i class="fa fa-sign-out"  ></i>Cerrar sesion</a>
                 </li>

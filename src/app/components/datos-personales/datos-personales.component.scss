@@ -1,0 +1,116 @@
+@import "../../../styles";
+.dash{
+    position:relative;
+  	left:19%;
+ 	  width: 81%;
+    margin-top:10px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  	@media screen and (max-width:1024px){
+	    width: 100%;
+	    left: 0;
+   }
+   .container-info-personal{
+      min-height: 500px;
+      max-width: 650px;
+      width: 100%;
+      background: $fondos;
+      box-shadow: $border-shadow-bread;
+      padding: 20px 20px;
+      @media screen and (max-width:768px){
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 25px;
+      }
+      @media screen and (max-width:576px){
+        max-width: 90%;
+        // margin-top: 25px;
+        margin-bottom: 15px;
+        h2{
+          font-size: 20px;
+        }
+        input{
+          font-size: 14px;
+        }
+      }
+      hr{
+        background: $accent-color;
+      }
+      .datos-personal{
+        @media screen and (max-width:768px){
+        order: 1;
+        }
+      }
+      .img-personal{
+        .content-img{
+          width: 160px;
+          height: 160px;
+          position: relative;
+          overflow: visible;
+          box-shadow: $border-shadow-bread;
+          border-radius: 7px;
+
+          @media screen and (max-width:768px){
+             margin-left: auto;
+             margin-right: auto;
+          }
+          .fa.fa-user-circle-o{
+            font-size: 158px;
+          }
+          .img-fluid{
+            // width: 100%;
+            // height: 100%;
+            height: 160px;
+            width: 160px;
+            object-fit: cover;
+            border-radius: 7px;
+            box-shadow: $border-shadow-bread;
+          }
+          .edit{
+            position: absolute;
+            bottom: -12px;
+            right: 0;
+            background: $accent-color;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            color: white;
+            cursor: pointer;
+            box-shadow: $border-shadow-bread;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            label{
+              width: 100%;
+              cursor: pointer;
+              height: 100%;
+              display: flex;
+              justify-content: center;
+            }
+            .ico-pencil{
+                  cursor: pointer;
+                  font-size: 18px;
+                  line-height: 28px;
+            }
+          }
+        }
+      }
+      .btn-guardar{
+          width: 60%;
+          font-weight: bold;
+          background: $accent-color;
+          color:$primary-color-text;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+          box-shadow: $border-shadow-bread;
+          &:hover{
+            background: transparent;
+            color: $accent-color;
+            box-shadow: $border-shadow-hover;
+            border-color:$accent-color;
+          }
+      }
+  }
+}

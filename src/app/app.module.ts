@@ -8,8 +8,13 @@ import { ChartsModule } from 'ng2-charts';
 import { AgmCoreModule } from '@agm/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Md2DatepickerModule }  from 'md2/datepicker';
+import { Md2Module }  from 'md2';
+
 
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
+import { NgDropFilesDirective2 } from './directives/ng-drop-files2.directive';
+
 
 import { APP_ROUTING } from './app.routes';
 
@@ -21,6 +26,8 @@ import { AdminService } from './services/admin.service';
 import { LoginGuard } from './services/login.guard.service';
 import { ComponentGuard } from './services/component.guard.service';
 import { PublicarService } from './services/publicar.service';
+import { MisdatosService } from './services/misdatos.service';
+
 
 
 /*Componentes*/
@@ -35,6 +42,8 @@ import { PublicarNuevoComponent } from './components/publicar/publicar-nuevo/pub
 import { PublicarEditarComponent } from './components/publicar/publicar-editar/publicar-editar.component';
 import { MapaComponent } from './components/mapa/mapa.component';
 import { EasymodalComponent } from './components/easymodal/easymodal.component';
+import { MiEmpresaComponent } from './components/mi-empresa/mi-empresa.component';
+import { DatosPersonalesComponent } from './components/datos-personales/datos-personales.component';
 
 
 @NgModule({
@@ -49,8 +58,11 @@ import { EasymodalComponent } from './components/easymodal/easymodal.component';
     PublicarNuevoComponent,
     PublicarEditarComponent,
     NgDropFilesDirective,
+    NgDropFilesDirective2,
     MapaComponent,
-    EasymodalComponent
+    EasymodalComponent,
+    MiEmpresaComponent,
+    DatosPersonalesComponent
   ],
   imports: [
     HttpModule,
@@ -65,6 +77,8 @@ import { EasymodalComponent } from './components/easymodal/easymodal.component';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    Md2DatepickerModule,
+    Md2Module,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBgPba9ENKjx2AD7IOG2SIFN3x5WYAKqo4',
       libraries: ["places"]
@@ -78,6 +92,7 @@ import { EasymodalComponent } from './components/easymodal/easymodal.component';
     LoginGuard,
     ComponentGuard,
     PublicarService,
+    MisdatosService,
     HttpClient
   ],
   bootstrap: [AppComponent]

@@ -23,18 +23,18 @@ export class HomeComponent  implements OnInit{
   }
 
   getListaPublicaciones() {
-    let publicaciones = this._publicarService.getPublicacionesRecientes(this.iduser)
-      .subscribe(res => {
-        console.log(res);
-        // this.cantPubli = res.length;
-        this.ultimasPublic = res.reverse();
-        /* if (this.cantPubli > 0) {
-          this.ultimasPublic.push(res[this.cantPubli - 1], res[this.cantPubli - 2], res[this.cantPubli - 3]);
-          console.log(this.cantPubli);
-          console.log(this.ultimasPublic);
-        } */
-        publicaciones.unsubscribe();
-      });
+    // let publicaciones = this._publicarService.getPublicacionesRecientes(this.iduser)
+    //   .subscribe(res => {
+    //     console.log(res);
+    //     // this.cantPubli = res.length;
+    //     this.ultimasPublic = res.reverse();
+    //     /* if (this.cantPubli > 0) {
+    //       this.ultimasPublic.push(res[this.cantPubli - 1], res[this.cantPubli - 2], res[this.cantPubli - 3]);
+    //       console.log(this.cantPubli);
+    //       console.log(this.ultimasPublic);
+    //     } */
+    //     publicaciones.unsubscribe();
+    //   });
 
   }
   getTotalPublicaciones(){
@@ -42,7 +42,7 @@ export class HomeComponent  implements OnInit{
                         .subscribe(res=>{
                           console.log('TotalPublicaciones',res);
                           this.cantPubli = res.length;
-        
+                          this.ultimasPublic=res.slice(-3).reverse();
                           listPublicaciones.unsubscribe();
                         })
   }

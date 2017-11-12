@@ -1,155 +1,253 @@
 *{
-
-    box-sizing: border-box;
-}
-a{
-    text-decoration: none;
-}
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
-/****************Paleta****************/
-$primary-color-dark     : #455A64;
-$primary-color          : #607D8B;
-$primary-color-light    : #CFD8DC;
-$primary-color-text     : #FFFFFF;
-$accent-color           : #FF5722;
-$primary-text-color     : #212121;
-$secondary-text-color   : #757575;
-$divider-color          : #BDBDBD;
-$fondos                 : #F2F2F2;
-/*************Border-Shadow**********************/
-$border-shadow-bread:0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 2px 0px -2px rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.12);
-$border-shadow-hover:0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12), 0 5px 5px -3px rgba(0, 0, 0, .2);
-
-agm-map {
-  height: 300px;
-}
-app-login{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-height: 100vh;
-}
-app-home{
-    background: $fondos;
-}
-app-login{
-	background-image: url('/assets/img/fondo2jpg.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-	// &:before{
-	// 	    content: "";
-	// 		background: rgba(255,255,255, 0.3);
-	// 		position: absolute;
-	// 		left: 0;
-	// 		height: 100%;
-	// 		width: 100%;
-	// 		top: 0;
-	// 		z-index: 1;
-	// }
-}
-
-input:focus{
-    border-color:$accent-color;
-}
-
-/*Material*/
-.full-width{
-	width: 100%;
-}
-$color-marketmaq: #FF5722;
-.full-width{
-	width: 100%;
-}
-
-$color-marketmaq: #FF5722;
-.mat-focused{
+	
+		box-sizing: border-box;
+	}
+	a{
+		text-decoration: none;
+	}
+	@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+	
+	/****************Paleta****************/
+	$primary-color-dark     : #455A64;
+	$primary-color          : #607D8B;
+	$primary-color-light    : #CFD8DC;
+	$primary-color-text     : #FFFFFF;
+	$accent-color           : #FF5722;
+	$primary-text-color     : #212121;
+	$secondary-text-color   : #757575;
+	$divider-color          : #BDBDBD;
+	$fondos                 : #F2F2F2;
+	/*************Border-Shadow**********************/
+	$border-shadow-bread:0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 2px 0px -2px rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.12);
+	$border-shadow-hover:0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12), 0 5px 5px -3px rgba(0, 0, 0, .2);
+	
+	agm-map {
+	  height: 300px;
+	}
+	app-login{
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		min-height: 100vh;
+	}
+	app-home{
+		background: $fondos;
+	}
+	app-login{
+		background-image: url('/assets/img/fondo2jpg.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		// &:before{
+		// 	    content: "";
+		// 		background: rgba(255,255,255, 0.3);
+		// 		position: absolute;
+		// 		left: 0;
+		// 		height: 100%;
+		// 		width: 100%;
+		// 		top: 0;
+		// 		z-index: 1;
+		// }
+	}
+	
+	input:focus{
+		border-color:$accent-color;
+	}
+	
+	/*Material*/
+	.full-width{
+		width: 100%;
+	}
+	$color-easymaq: #FF5722;
+	.full-width{
+		width: 100%;
+	}
+	
+	$color-easymaq: #FF5722;
+	.mat-focused{
+		.mat-input-placeholder{
+			color: $color-easymaq !important;
+		}
+	}
+	md-input-container{
+		width:100% !important;
+	}
+	
 	.mat-input-placeholder{
-		color: $color-marketmaq !important;
-	}
-}
-md-input-container{
-	width:100% !important;
-}
-
-.mat-input-placeholder{
-	&.mat-focused{
-		color: $color-marketmaq !important;
-	}
-}
-.mat-input-underline{
-	.mat-input-ripple{
-		background: $color-marketmaq;
 		&.mat-focused{
-			color: $color-marketmaq;
+			color: $color-easymaq !important;
 		}
 	}
-}
-
-.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb{
-    background-color:$accent-color;
-}
-.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar{
-    background-color:  rgba(255, 87, 34, 0.8)
-}
-.swiper-pagination-bullet-active{
-	background: $color-marketmaq !important;
-}
-.mat-select:focus:not(.mat-select-disabled).mat-primary .mat-select-underline{
-    background: $color-marketmaq !important;
-}
-.mat-select:focus:not(.mat-select-disabled) .mat-select-trigger{
-	color: $color-marketmaq !important;
-}
-.mat-select:focus:not(.mat-select-disabled) .mat-select-underline{
-	background: $color-marketmaq !important;
-}
-
-.mat-select:focus:not(.mat-select-disabled) .mat-select-arrow{
-	color: $color-marketmaq !important;
-}
-.mat-select{
-	width:100% !important;
-	@media screen and (max-width:768px){
-		margin: 20px 0;
-	}
-}
-.mat-spinner.mat-primary{
-	svg{
-		path{
-			stroke:$accent-color;
+	.mat-input-underline{
+		.mat-input-ripple{
+			background: $color-easymaq;
+			&.mat-focused{
+				color: $color-easymaq;
+			}
 		}
 	}
-}
-.mat-option.mat-selected{
-	color: $color-marketmaq !important;
-	width:100% !important;
-}
-.mat-option.mat-selected.mat-primary, .mat-primary .mat-option.mat-selected{
-    color:$accent-color !important;
-}
-.mat-radio-checked .mat-radio-outer-circle{
-	border-color: $color-marketmaq !important;
-}
-
-.mat-radio-inner-circle{
-	background: $color-marketmaq;
-}
-
-.mat-input-infix{
-	width: 600px;
-}
-
-.mat-input-underline{
-	width: 600px;
-}
-
-.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
-.mat-checkbox-checked.mat-accent .mat-checkbox-background{
-	background-color: $color-marketmaq;
-}
-
-.ngx-pagination .current{
-  background: $accent-color !important;
-}
+	
+	.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb{
+		background-color:$accent-color;
+	}
+	.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar{
+		background-color:  rgba(255, 87, 34, 0.8)
+	}
+	.swiper-pagination-bullet-active{
+		background: $color-easymaq !important;
+	}
+	.mat-select:focus:not(.mat-select-disabled).mat-primary .mat-select-underline{
+		background: $color-easymaq !important;
+	}
+	.mat-select:focus:not(.mat-select-disabled) .mat-select-trigger{
+		color: $color-easymaq !important;
+	}
+	.mat-select:focus:not(.mat-select-disabled) .mat-select-underline{
+		background: $color-easymaq !important;
+	}
+	
+	.mat-select:focus:not(.mat-select-disabled) .mat-select-arrow{
+		color: $color-easymaq !important;
+	}
+	.mat-select{
+		width:100% !important;
+		@media screen and (max-width:768px){
+			margin: 20px 0;
+		}
+	}
+	.mat-spinner.mat-primary{
+		svg{
+		transition: all 1s ease;
+			path{
+				stroke:$accent-color;
+			}
+		}
+	}
+	.mat-option.mat-selected{
+		color: $color-easymaq !important;
+		width:100% !important;
+	}
+	.mat-option.mat-selected.mat-primary, .mat-primary .mat-option.mat-selected{
+		color:$accent-color !important;
+	}
+	.mat-radio-checked .mat-radio-outer-circle{
+		border-color: $color-easymaq !important;
+	}
+	
+	.mat-radio-inner-circle{
+		background: $color-easymaq;
+	}
+	
+	.mat-input-infix{
+		width: 600px;
+	}
+	
+	.mat-input-underline{
+		width: 600px;
+	}
+	
+	.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+	.mat-checkbox-checked.mat-accent .mat-checkbox-background{
+		background-color: $color-easymaq;
+	}
+	
+	.ngx-pagination .current{
+	  background: $accent-color !important;
+	}
+	
+	.mydrp, .mydrp .headerclearbtn, .mydrp .headerokbtn{
+	  border-color:$accent-color !important;
+	}
+	.mydrp .icon-mydrpcalendar:before{
+	  color: $accent-color;
+	}
+	md2-datepicker{
+	  width: 100% !important;
+	  .md2-datepicker-input:focus{
+		border-bottom: 1px solid $accent-color;
+	  }
+	}
+	/* Inicio datepicker */
+	$primary: #FF5722;
+	$secundary: #607D8B;
+	.md2-datepicker-input{
+		// @include fontChico;
+	}
+	.md2-datepicker-input {
+	  &.md2-datepicker-input-focused {
+		color: $primary !important;
+		border-color: $primary !important;
+	  }
+	}
+	
+	.md2-datepicker-arrow {
+	  .md2-datepicker-input-focused & {
+		color: $primary !important;
+	  }
+	}
+	
+	.md2-datepicker-header {
+	  background: $secundary !important;
+	}
+	
+	.md2-calendar-year {
+	  &.selected {
+		color: $primary !important;
+	  }
+	}
+	
+	.md2-calendar-day {
+	  &.today {
+		color: $primary !important;
+	  }
+	  &.selected,
+	  &.selected:hover {
+		background: $primary !important;
+	  }
+	}
+	
+	.md2-clock-center {
+	  background-color: $primary !important;
+	}
+	
+	.md2-clock-hand {
+	  background-color: $primary !important;
+	  &::before {
+		background-color: $primary !important;
+	  }
+	}
+	
+	.md2-clock-hour,
+	.md2-clock-minute {
+	  &.active {
+		background: lighten($primary, 25) !important;
+	  }
+	}
+	
+	.md2-datepicker-actions {
+	  .md2-button {
+		color: $primary !important;
+	  }
+	}
+	/* Fin datepicker */
+	.mt_select{
+		padding-top: 10px;
+		.mat_select{
+			width: 100% !important;
+		}
+	}
+	.opera-star{
+		transition:all 0.25s ease;
+		position: absolute;
+		right: 20px;
+		top: 10px;
+		cursor:pointer;
+		i{
+			font-size: 30px;
+			cursor: pointer;
+			color: #fff;
+			// @include prefixer(text-shadow, 2px 2px 3px rgba(105, 105, 105, 1));
+		}
+	}
+	
+	
